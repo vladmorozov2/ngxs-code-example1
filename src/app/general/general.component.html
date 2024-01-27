@@ -1,0 +1,17 @@
+<form autocomplete="off" (ngSubmit)="add()" #todoForm="ngForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your TODO item</mat-label>
+    <input name="title" matInput [(ngModel)]="newTitle" required   minlength="3"/>
+
+  </mat-form-field>
+
+  <!-- Add a condition to disable the button when the form is invalid -->
+  <button mat-raised-button color="primary" type="submit" [disabled]="!todoForm.valid">
+    Submit
+  </button>
+</form>
+
+<!-- Display TODO items -->
+<ul>
+  <li *ngFor="let todo of items$ | async">{{ todo | json }}</li>
+</ul>
